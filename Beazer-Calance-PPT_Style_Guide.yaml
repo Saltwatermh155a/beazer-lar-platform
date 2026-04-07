@@ -1,0 +1,726 @@
+```yaml
+styleGuide:
+  id: "beazer-calance-ppt-execution-framework"
+  version: "1.0"
+  client: "Beazer Homes"
+  vendor: "Calance"
+  language: "en-US"
+  notes:
+    - "Reverse-engineered from provided HTML/CSS; style is designed for dense, text-forward slides."
+    - "Avoid replicating embedded base64 logos; use provided asset files or logo placeholders."
+
+canvas:
+  slideFormat:
+    recommended: "8.5x11in portrait (letter)"
+    fallback: "16:9 widescreen (scale components proportionally)"
+  background:
+    slideFill: "#FFFFFF"
+  safeMarginsIn:
+    top: 0.25
+    right: 0.25
+    bottom: 0.5
+    left: 0.25
+
+typography:
+  fontFamily: "Segoe UI, Tahoma, Geneva, Verdana, sans-serif"
+  baseText:
+    fontSizePt: 11
+    lineHeight: 1.4
+    color: "primary-dark"
+  printLikeTightMode:
+    enabled: true
+    targetFontSizePt: 10
+    targetLineHeight: 1.2
+  weights:
+    regular: 400
+    light: 300
+    semibold: 600
+    bold: 700
+  headingScale:
+    - name: "H1 (Title band title)"
+      selectorLike: "title-section h1"
+      fontSizePt: 24
+      weight: 600
+      color: "white"
+    - name: "Subtitle (Title band subtitle)"
+      selectorLike: "title-section .subtitle"
+      fontSizePt: 11
+      weight: 300
+      color: "white"
+      opacity: 0.95
+    - name: "H2 (Header middle: AI Enablement Program)"
+      selectorLike: "h2 in header"
+      fontSizePt: 16
+      weight: 600
+      color: "primary-dark"
+    - name: "Section title (Section header bar text)"
+      selectorLike: "section-title"
+      fontSizePt: 14
+      weight: 600
+      color: "white"
+    - name: "H4 (Card inner title)"
+      selectorLike: "level-title / track h3 / dept-name etc."
+      fontSizePt: 12
+      weight: 600
+      color: "primary-dark"
+    - name: "Small label"
+      fontSizePt: 9
+      color: "neutral-gray"
+      weight: 600
+
+colors:
+  tokens:
+    primary-dark: "#222B26"
+    light-bg: "#F2F0EE"
+    accent-red: "#9F2C32"
+    accent-gold: "#AE8F5D"
+    neutral-gray: "#9F9C8F"
+    accent-green: "#679F7B"
+    white: "#FFFFFF"
+  semanticUsage:
+    successGreen: "accent-green"
+    templateGold: "accent-gold"
+    riskRed: "accent-red"
+    mutedText: "neutral-gray"
+    pageBg: "white"
+    cardBg: "light-bg"
+
+shapesAndBorders:
+  radii:
+    small: 4
+    medium: 6
+    pill: 15
+  borders:
+    sectionBarBottom:
+      thicknessPtEquivalent: 3
+      color: "accent-green"
+    cardBorderStandard:
+      thicknessPtEquivalent: 2
+      color: "accent-green"
+    maturityLevelBorders:
+      level0: { thicknessPtEquivalent: 3, color: "accent-green" }
+      level1: { thicknessPtEquivalent: 3, color: "accent-gold" }
+      level2: { thicknessPtEquivalent: 3, color: "accent-red" }
+  shadows:
+    pptShadow: "none (HTML had minimal/no shadow; keep flat)"
+
+layoutRules:
+  general:
+    sectionSpacing:
+      beforeSectionTitlePtEquivalent: 25
+      afterSectionTitlePtEquivalent: 15
+    paragraphs:
+      marginTopPtEquivalent: 10
+      lineHeight: 1.5
+    lists:
+      ul:
+        leftIndentPxEquivalent: 18
+        marginTopPtEquivalent: 8
+        marginBottomPtEquivalent: 10
+      li:
+        marginYPtEquivalent: 5
+        fontSizePt: 9.5
+  gridGaps:
+    defaultGap: 12
+  safeText:
+    - "Keep dense content but avoid overflowing narrow cards; wrap aggressively."
+    - "Use fewer line breaks; rely on bullets and short phrases."
+
+brandAssets:
+  logos:
+    headerLeftBeazer:
+      type: "image"
+      classLike: "beazer-logo"
+      heightPxApprox: 35
+      fit: "contain"
+    headerRightCalance:
+      type: "image"
+      classLike: "calance-logo"
+      heightPxApprox: 22
+      opacity: 0.8
+      fit: "contain"
+    partnershipInline:
+      type: "inline"
+      text: "In partnership with"
+      textColor: "neutral-gray"
+      textFontSizePt: 9
+      alignment: "center"
+      spacingPxEquivalent: 15
+  badge:
+    consultativeBadge:
+      textTransform: "uppercase"
+      letterSpacingPtEquivalent: 0.5
+      fontSizePt: 9
+      fontWeight: 700
+      paddingPx:
+        y: 5
+        x: 12
+      borderRadiusPxEquivalent: 15
+      gradient:
+        type: "linear-gradient(135deg)"
+        from: "accent-gold"
+        to: "neutral-gray"
+      textColor: "white"
+      fallbackBorder:
+        enabled: true
+        color: "neutral-gray"
+        widthPtEquivalent: 1
+
+pptTemplates:
+  commonComponents:
+    HeaderBar:
+      description: "Top bar with a consultative badge, a central title, and Beazer name on the right."
+      components:
+        - type: "badge"
+          tokenRef: "brand.badge.consultativeBadge"
+          text: "Execution Framework"
+          align: "left"
+        - type: "title"
+          text: "AI Enablement Program"
+          styleRef: "typography.H2 (Header middle)"
+          align: "center"
+        - type: "text"
+          text: "Beazer Homes"
+          style:
+            fontSizePt: 9
+            color: "neutral-gray"
+          align: "right"
+      barStyle:
+        background: "white"
+        bottomBorder:
+          enabled: false
+          thicknessPtEquivalent: 3
+          color: "accent-green"
+        paddingPx:
+          y: 15
+          x: 20
+      note:
+        - "In HTML there is also a separate logo row above this header; implement as LogoStrip if desired."
+
+    LogoStrip:
+      description: "Optional logo row containing Beazer logo and Calance logo + 'In partnership with' text."
+      components:
+        - type: "image"
+          tokenRef: "brandAssets.logos.headerLeftBeazer"
+          align: "left"
+        - type: "inlineRow"
+          components:
+            - type: "text"
+              text: "In partnership with"
+              style:
+                color: "neutral-gray"
+                fontSizePt: 9
+            - type: "image"
+              tokenRef: "brandAssets.logos.headerRightCalance"
+          align: "right"
+      separator:
+        enabled: true
+        thicknessPtEquivalent: 2
+        color: "accent-green"
+        location: "bottom of strip"
+      paddingPx:
+        bottom: 8
+        marginBottomPtEquivalent: 10
+
+    TitleBand:
+      description: "High-contrast title panel with gradient background."
+      style:
+        background:
+          type: "linear-gradient(135deg)"
+          from: "primary-dark"
+          to: "accent-green"
+        color: "white"
+        paddingPx:
+          y: 25
+          x: 30
+        borderRadiusPxEquivalent: 6
+        textAlign: "center"
+      contentSlots:
+        - slot: "h1"
+          styleRef: "typography.H1 (Title band title)"
+        - slot: "subtitle"
+          styleRef: "typography.Subtitle (Title band subtitle)"
+      spacing:
+        marginBottomPtEquivalent: 20
+
+    DisclaimerCallout:
+      description: "Light callout with gold accent and italic note."
+      style:
+        background: "light-bg"
+        borderLeft:
+          thicknessPtEquivalent: 4
+          color: "accent-gold"
+        paddingPx:
+          y: 12
+          x: 15
+        borderRadiusPxEquivalent: 4
+        fontStyle: "italic"
+        fontSizePt: 10
+        color: "neutral-gray"
+      content:
+        prefixBold: "Note:"
+
+    SectionHeaderBar:
+      description: "Green bar with white text and optional emoji/icon."
+      style:
+        background: "accent-green"
+        color: "white"
+        paddingPx:
+          y: 12
+          x: 20
+        borderRadiusPxEquivalent: 6
+        fontSizePt: 14
+        fontWeight: 600
+        display: "row"
+        alignItems: "center"
+        gapPxEquivalent: 10
+      icon:
+        enabled: true
+        fontSizePtEquivalent: 16
+        color: "white"
+      margin:
+        topPtEquivalent: 25
+        bottomPtEquivalent: 15
+
+  calloutBoxes:
+    FeedbackLoopBox:
+      style:
+        background: "light-bg"
+        borderLeft:
+          thicknessPtEquivalent: 5
+          color: "accent-red"
+        borderRadiusPxEquivalent: 4
+        paddingPx:
+          y: 15
+          x: 15
+        fontSizePt: 10
+        lineHeight: 1.5
+      header:
+        color: "accent-red"
+        fontWeight: 600
+        marginBottomPtEquivalent: 8
+      items:
+        eachItem:
+          borderLeft:
+            thicknessPtEquivalent: 2
+            color: "accent-red"
+          paddingLeftPxEquivalent: 15
+          marginYPtEquivalent: 8
+
+    KnowledgeBox:
+      style:
+        background: "light-bg"
+        borderLeft:
+          thicknessPtEquivalent: 5
+          color: "accent-gold"
+        borderRadiusPxEquivalent: 4
+        paddingPx:
+          y: 15
+          x: 15
+        fontSizePt: 10
+        lineHeight: 1.5
+      header:
+        color: "accent-gold"
+        fontWeight: 600
+        marginBottomPtEquivalent: 8
+      items:
+        eachItem:
+          borderLeft:
+            thicknessPtEquivalent: 2
+            color: "accent-gold"
+          paddingLeftPxEquivalent: 15
+          marginYPtEquivalent: 8
+
+    RolloutBox:
+      style:
+        background: "light-bg"
+        borderLeft:
+          thicknessPtEquivalent: 5
+          color: "accent-green"
+        borderRadiusPxEquivalent: 4
+        paddingPx:
+          y: 15
+          x: 15
+        fontSizePt: 10
+        lineHeight: 1.5
+      header:
+        color: "accent-green"
+        fontWeight: 600
+        marginBottomPtEquivalent: 8
+      phases:
+        eachPhase:
+          borderLeft:
+            thicknessPtEquivalent: 2
+            color: "accent-green"
+          paddingLeftPxEquivalent: 15
+          marginYPtEquivalent: 10
+          strongColor: "accent-green"
+
+    SupportBox_Optional (defined in CSS but not used in sample):
+      style:
+        gridColumns: 3
+        card:
+          background: "light-bg"
+          borderRadiusPxEquivalent: 6
+          paddingPx: 12
+          border:
+            thicknessPtEquivalent: 2
+            color: "accent-green"
+          textAlign: "center"
+        methodName:
+          color: "accent-green"
+          fontWeight: 600
+          fontSizePt: 10
+          marginBottomPtEquivalent: 5
+        methodDetail:
+          fontSizePt: 9
+          lineHeight: 1.3
+
+  gridsAndCards:
+    MaturityModel:
+      grid:
+        columns: 3
+        gapPxEquivalent: 15
+      levelCard:
+        background: "light-bg"
+        borderRadiusPxEquivalent: 6
+        paddingPx:
+          y: 20
+          x: 20
+        border:
+          thicknessPtEquivalent: 3
+          colorByLevel:
+            level-0: "accent-green"
+            level-1: "accent-gold"
+            level-2: "accent-red"
+        minHeightPtEquivalent: 200
+      levelBadge:
+        position: "absoluteTopLeft"
+        topPxEquivalent: -12
+        leftPxEquivalent: 15
+        paddingPx:
+          y: 5
+          x: 15
+        borderRadiusPxEquivalent: 15
+        fontSizePt: 9
+        fontWeight: 700
+        textColor: "white"
+        backgroundByLevel:
+          level-0: "accent-green"
+          level-1: "accent-gold"
+          level-2: "accent-red"
+      innerText:
+        levelTitle:
+          fontSizePt: 12
+          fontWeight: 600
+          color: "primary-dark"
+          marginTopBottomPtEquivalent: 8
+        timeframe:
+          fontSizePt: 9
+          color: "neutral-gray"
+          marginBottomPtEquivalent: 12
+        content:
+          fontSizePt: 10
+          lineHeight: 1.5
+
+    TwoTrackExecution:
+      grid:
+        columns: 2
+        gapPxEquivalent: 15
+      trackCard:
+        background: "light-bg"
+        borderRadiusPxEquivalent: 6
+        paddingPx:
+          y: 20
+          x: 20
+        borderLeft:
+          thicknessPtEquivalent: 6
+          colorByTrack:
+            track-1: "accent-green"
+            track-2: "accent-gold"
+      trackHeaderRow:
+        trackNumberCircle:
+          sizePxApprox: 35
+          borderRadius: "circle"
+          fontSizePt: 14
+          fontWeight: 700
+          color: "white"
+          backgroundByTrack:
+            track-1: "accent-green"
+            track-2: "accent-gold"
+          marginRightPxEquivalent: 12
+        trackTitle:
+          fontSizePt: 12
+          fontWeight: 600
+          color: "primary-dark"
+      trackContent:
+        fontSizePt: 10
+        lineHeight: 1.5
+
+    DepartmentGrid:
+      grid:
+        columns: 2
+        gapPxEquivalent: 12
+      deptCard:
+        background: "white"
+        border:
+          thicknessPtEquivalent: 2
+          color: "accent-green"
+        borderRadiusPxEquivalent: 6
+        paddingPx: 15
+      deptName:
+        fontSizePt: 11
+        fontWeight: 600
+        color: "accent-green"
+        marginBottomPtEquivalent: 8
+      deptUseCases:
+        fontSizePt: 9
+        lineHeight: 1.4
+        bullets:
+          marginTopBottomPtEquivalent: 5
+          leftIndentPxEquivalent: 15
+
+    MetricsGrid:
+      grid:
+        columns: 4
+        gapPxEquivalent: 12
+      metricCard:
+        background:
+          type: "linear-gradient(135deg)"
+          from: "light-bg"
+          to: "white"
+        borderRadiusPxEquivalent: 6
+        paddingPx:
+          y: 12
+          x: 15
+        borderLeft:
+          thicknessPtEquivalent: 4
+          color: "accent-green"
+      metricLabel:
+        fontSizePt: 8
+        textTransform: "uppercase"
+        fontWeight: 600
+        color: "neutral-gray"
+        marginBottomPtEquivalent: 4
+      metricValue:
+        fontSizePt: 13
+        fontWeight: 700
+        color: "accent-green"
+
+    RolesGrid:
+      grid:
+        columns: 2
+        gapPxEquivalent: 12
+      roleCard:
+        background: "light-bg"
+        borderRadiusPxEquivalent: 6
+        paddingPx: 15
+        border:
+          thicknessPtEquivalent: 2
+          color: "accent-green"
+      roleTitle:
+        fontSizePt: 11
+        fontWeight: 600
+        color: "accent-green"
+        marginBottomPtEquivalent: 8
+      roleDetail:
+        fontSizePt: 9
+        lineHeight: 1.4
+        marginYPtEquivalent: 5
+
+    Timeline_Optional (defined in CSS):
+      timelineContainer:
+        grid:
+          columns: 12
+          gapPxEquivalent: 5
+      weekBlock:
+        background: "light-bg"
+        border:
+          thicknessPtEquivalent: 2
+          color: "accent-green"
+        borderRadiusPxEquivalent: 4
+        paddingPx:
+          y: 10
+          x: 5
+        textAlign: "center"
+        fontSizePt: 8
+        fontWeight: 600
+        levelTint:
+          level-0: { bg: "rgba(accent-green,0.2)", border: "accent-green" }
+          level-1: { bg: "rgba(accent-gold,0.2)", border: "accent-gold" }
+          level-2: { bg: "rgba(accent-red,0.2)", border: "accent-red" }
+      weekNumber:
+        fontSizePt: 11
+        marginBottomPtEquivalent: 3
+      weekFocus:
+        fontSizePt: 7
+        color: "primary-dark"
+        lineHeight: 1.2
+
+  tables:
+    CadenceTable:
+      selectorLike: "cadence-table"
+      style:
+        width: "100%"
+        borderCollapse: true
+        marginPtEquivalent: 15
+        fontSizePt: 10
+      headerRow:
+        background: "accent-green"
+        color: "white"
+        paddingPx: 10
+        textAlign: "left"
+        fontWeight: 600
+      bodyCells:
+        paddingPx: 10
+        border:
+          thicknessPtEquivalent: 1
+          color: "neutral-gray"
+        backgroundByRow:
+          even: "light-bg"
+          odd: "white"
+
+footer:
+  PartnershipApproachFooter:
+    container:
+      marginTopPtEquivalent: 30
+      paddingTopPtEquivalent: 20
+      borderTop:
+        thicknessPtEquivalent: 2
+        color: "accent-green"
+      textAlign: "center"
+      fontSizePt: 9
+      color: "neutral-gray"
+    logoRow:
+      enabled: true
+      flexCenter: true
+      gapPxEquivalent: 15
+      logoMaxHeightPxApprox: 18
+      opacity: 0.7
+    footerText:
+      marginYPtEquivalent: 8
+      strongColor: "primary-dark"
+
+slideTemplates:
+  - name: "Cover / Title"
+    layout:
+      - LogoStrip (optional)
+      - HeaderBar
+      - TitleBand
+      - DisclaimerCallout
+    contentMapping:
+      headerBadgeText: "Execution Framework"
+      headerTitle: "AI Enablement Program"
+      titleH1: "AI Enablement Program Framework"
+      titleSubtitle: "Transforming Copilot adoption through coaching-driven enablement, iterative testing, and systematic scaling"
+      disclaimerNotePrefix: "Note:"
+
+  - name: "Program Overview (Maturity Model)"
+    layout:
+      - SectionHeaderBar (emoji: "📊")
+      - BodyTextLead
+      - MaturityModel
+    componentSpecs:
+      leadParagraph:
+        fontSizePt: 11
+        lineHeight: 1.4
+        color: "primary-dark"
+
+  - name: "Two-Track Execution Model"
+    layout:
+      - SectionHeaderBar (emoji: "🚀")
+      - TwoTrackExecution
+
+  - name: "Weekly Operational Rhythm"
+    layout:
+      - SectionHeaderBar (emoji: "⏰")
+      - CadenceTable
+
+  - name: "Testing, Feedback & Iteration"
+    layout:
+      - SectionHeaderBar (emoji: "🔄")
+      - BodyTextIntroBold
+      - FeedbackLoopBox
+      - BodyTextMeasurementParagraph (fontSizePt: 10)
+
+  - name: "Knowledge Transfer & Systematic Scaling"
+    layout:
+      - SectionHeaderBar (emoji: "📚")
+      - BodyTextIntroBold
+      - KnowledgeBox (first: Capture/Codification)
+      - KnowledgeBox (second: Differentiated rollout)
+
+  - name: "Propagation Cadence: From Proof to Scale"
+    layout:
+      - SectionHeaderBar (emoji: "📈")
+      - RolloutBox
+
+  - name: "Department-Specific Use Cases"
+    layout:
+      - SectionHeaderBar (emoji: "🎯")
+      - DepartmentGrid
+
+  - name: "ROI Example (Accent Left Box)"
+    layout:
+      - calloutBoxLike:
+          background: "light-bg"
+          borderLeft:
+            thicknessPtEquivalent: 4
+            color: "accent-green"
+          paddingPx: 15
+          borderRadiusPxEquivalent: 6
+      content:
+        strongPrefix: "📈 ROI Example:"
+        body:
+          fontSizePt: 10
+          lineHeight: 1.4
+        emphasisStrong:
+          color: "primary-dark"
+          fontWeight: 700
+
+  - name: "Team Structure & Responsibilities"
+    layout:
+      - SectionHeaderBar (emoji: "👥")
+      - RolesGrid
+      - bodyParagraphBelow (fontSizePt: 10)
+
+  - name: "Program Flexibility & Customization"
+    layout:
+      - SectionHeaderBar (emoji: "🔧")
+      - BodyText (intro)
+      - BulletedList (5 bullets)
+      - BodyText (possible variations sentence)
+
+  - name: "Success Metrics & Measurement"
+    layout:
+      - SectionHeaderBar (emoji: "✅")
+      - MetricsGrid
+      - measurementParagraph (fontSizePt: 10)
+
+  - name: "Partnership Approach (Footer-led)"
+    layout:
+      - PartnershipApproachFooter
+    note:
+      - "This sample renders the partnership approach in the footer region; keep logos + text centered."
+
+agentOutputChecklist:
+  doAlways:
+    - "Use Segoe UI font."
+    - "Use Beazer/Calance logo placements as defined in Header + LogoStrip/Footer."
+    - "Use the green section header bar for every major section."
+    - "Use the correct callout accent color by semantic type (green=rollout/support/section; red=feedback/testing; gold=knowledge/templating)."
+    - "Maintain list/bullet density with short lines (target ~9–10pt for bullets)."
+  avoid:
+    - "Avoid heavy shadows/3D effects."
+    - "Avoid non-token colors (only use the hex tokens provided)."
+    - "Do not stretch gradients beyond their container; keep corners rounded ~6px."
+
+tokenAliasesForAI:
+  bgLight: "#F2F0EE"
+  primary: "#222B26"
+  green: "#679F7B"
+  gold: "#AE8F5D"
+  red: "#9F2C32"
+  gray: "#9F9C8F"
+  white: "#FFFFFF"
+```

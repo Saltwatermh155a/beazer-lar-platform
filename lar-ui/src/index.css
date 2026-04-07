@@ -1,0 +1,103 @@
+/* ===== Beazer Brand Design System ===== */
+
+/* Base Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #ffffff;
+  color: #213547;
+  line-height: 1.5;
+  min-height: 100vh;
+}
+
+/* ===== Beazer Brand Color Overrides ===== */
+
+.text-danger {
+  /*BEAZER RED*/
+  color: #A6192E !important;
+}
+
+.bg-success {
+  /*BEAZER GREEN*/
+  background-color: #78BE20 !important;
+}
+
+.bg-dark {
+  /*BEAZER BLACK*/
+  background-color: #002532 !important;
+}
+
+.bg-secondary {
+  /*BEAZER GRAY*/
+  background-color: #7D7F79 !important;
+}
+
+.text-secondary {
+  /*BEAZER GRAY*/
+  color: #7D7F79 !important;
+}
+
+.btn-danger {
+  --bs-btn-bg: #A6192E !important;
+  --bs-btn-border-color: #A6192E !important;
+  --bs-btn-hover-bg: #A6192E !important;
+  --bs-btn-hover-border-color: #A6192E !important;
+  --bs-btn-active-bg: #A6192E !important;
+  --bs-btn-active-border-color: #A6192E !important;
+  --bs-btn-disabled-bg: #A6192E !important;
+  --bs-btn-disabled-border-color: #A6192E !important;
+}
+
+.btn-success {
+  --bs-btn-bg: #78BE20 !important;
+  --bs-btn-border-color: #78BE20 !important;
+  --bs-btn-hover-bg: #78BE20 !important;
+  --bs-btn-hover-border-color: #78BE20 !important;
+  --bs-btn-active-bg: #78BE20 !important;
+  --bs-btn-active-border-color: #78BE20 !important;
+  --bs-btn-disabled-bg: #78BE20 !important;
+  --bs-btn-disabled-border-color: #78BE20 !important;
+}
+
+.btn-info {
+  --bs-btn-bg: #7D7F79 !important;
+  --bs-btn-border-color: #7D7F79 !important;
+  --bs-btn-hover-bg: #7D7F79 !important;
+  --bs-btn-hover-border-color: #7D7F79 !important;
+  --bs-btn-active-bg: #7D7F79 !important;
+  --bs-btn-active-border-color: #7D7F79 !important;
+  --bs-btn-disabled-bg: #7D7F79 !important;
+  --bs-btn-disabled-border-color: #7D7F79 !important;
+  --bs-btn-color: #fff !important;
+  --bs-btn-hover-color: #fff !important;
+}
+
+.btn-primary {
+  --bs-btn-bg: #7D7F79 !important;
+  --bs-btn-border-color: #7D7F79 !important;
+  --bs-btn-hover-bg: #7D7F79 !important;
+  --bs-btn-hover-border-color: #7D7F79 !important;
+  --bs-btn-active-bg: #7D7F79 !important;
+  --bs-btn-active-border-color: #7D7F79 !important;
+  --bs-btn-disabled-bg: #7D7F79 !important;
+  --bs-btn-disabled-border-color: #7D7F79 !important;
+}
+
+.form-check-input:checked {
+  background-color: #7D7F79 !important;
+  border-color: #7D7F79 !important;
+}
+
+.text-info {
+  color: #7D7F79 !important;
+}
+
+/* ===== Overflow Control ===== */
+.overflow-x-hidden {
+  overflow-x: hidden;
+}

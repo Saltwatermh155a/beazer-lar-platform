@@ -1,0 +1,588 @@
+# ============================================================================
+# BEAZER HOMES — LAR LIFECYCLE PLATFORM STYLE GUIDE
+# Reverse-engineered from Beazer internal SharePoint ("Vera" intranet)
+# Source: Land Acquisition page + Vera homepage screenshots (March 2026)
+# For use by: Claude Code / development team building the LAR platform
+# ============================================================================
+#
+# CONTEXT:
+# Beazer's internal tooling uses SharePoint Online. The design language is
+# clean, professional, enterprise-grade — NOT the creative/presentation
+# style from our earlier Calance pitch decks. The platform we're building
+# should feel like a native extension of their SharePoint ecosystem, not
+# a third-party app bolted on.
+#
+# The previous Beazer-Calance-PPT_Style_Guide.yaml was built for executive
+# slide decks and uses a different aesthetic (gradients, emoji icons, pill
+# badges). That file should NOT be used for the platform UI. Use THIS file.
+# ============================================================================
+
+meta:
+  id: "beazer-lar-platform-style-guide"
+  version: "2.0"
+  project: "LAR Lifecycle Management Platform"
+  client: "Beazer Homes"
+  partner: "Calance"
+  sources:
+    - "Vera intranet homepage (image002.png)"
+    - "Land Acquisition SharePoint page (image001.png)"
+    - "Beazer Homes public brand assets"
+  supersedes: "Beazer-Calance-PPT_Style_Guide.yaml (presentation-only)"
+
+# ============================================================================
+# 1. COLOR SYSTEM
+# ============================================================================
+# The SharePoint pages use a restrained palette dominated by Beazer's brand
+# red (#9F2C32 / deep crimson) as the primary action/navigation color, with
+# white backgrounds, light gray surfaces, and minimal accent color. There is
+# NO green accent in the UI — green was a Calance presentation color.
+# Gold is absent from the UI as well.
+
+colors:
+  brand:
+    beazer-red: "#9F2C32"        # Primary brand color. Used for: header bar bg,
+                                  # section banner bg, active nav tab underlines,
+                                  # quick-link card backgrounds, CTA buttons.
+                                  # This is THE dominant color in Beazer's UI.
+
+    beazer-red-dark: "#7A2128"   # Darker shade for hover states, pressed buttons,
+                                  # active navigation items. Derived from screenshot
+                                  # header gradient/shadow.
+
+    beazer-red-light: "#C4545A"  # Lighter tint for hover backgrounds on red
+                                  # elements, or for softer accent borders.
+
+  neutrals:
+    white: "#FFFFFF"              # Page background, card backgrounds, content areas
+    off-white: "#F8F8F8"          # Subtle surface differentiation (alternating rows,
+                                  # content well behind cards)
+    light-gray: "#F3F2F1"        # SharePoint's default surface gray. Used for:
+                                  # page chrome, sidebar bg, toolbar area, card
+                                  # hover states. Very close to SP's --neutralLighter.
+    mid-gray: "#EDEBE9"          # Dividers, borders between sections, card borders
+    border-gray: "#D2D0CE"       # Explicit borders on cards, table cell borders,
+                                  # input field borders. Subtle but visible.
+    text-secondary: "#605E5C"    # Secondary text, metadata, timestamps, labels.
+                                  # SharePoint's --neutralSecondary.
+    text-primary: "#323130"      # Primary body text. SharePoint's --neutralPrimary.
+                                  # NOT pure black — slightly warm gray.
+    text-dark: "#201F1E"         # Headings, bold labels, high-emphasis text.
+                                  # SharePoint's --neutralDark.
+    black: "#000000"             # Only for the Beazer logo wordmark. Never for text.
+
+  semantic:
+    success: "#107C10"           # Green checkmarks, completed states, positive
+                                  # indicators. Microsoft's standard green.
+    warning: "#FFB900"           # Approaching deadlines, caution states.
+                                  # Microsoft's standard amber.
+    error: "#D13438"             # Overdue items, validation errors, critical alerts.
+                                  # Microsoft's standard red (distinct from brand red).
+    info: "#0078D4"              # Informational badges, links that aren't nav,
+                                  # progress indicators. Microsoft's standard blue.
+
+  usage_rules:
+    - "beazer-red is the ONLY brand color used prominently in the UI"
+    - "Do NOT use accent-green (#679F7B) or accent-gold (#AE8F5D) — those are presentation-deck colors"
+    - "Semantic colors (success/warning/error/info) follow Microsoft Fluent conventions"
+    - "Background hierarchy: white > off-white > light-gray > mid-gray"
+    - "Never place text directly on beazer-red below 14px without ensuring WCAG AA contrast"
+
+# ============================================================================
+# 2. TYPOGRAPHY
+# ============================================================================
+# SharePoint uses Segoe UI throughout. Beazer's pages follow this exactly.
+# No custom/display fonts. The typography is functional and readable, not
+# decorative. Weight usage is restrained — mostly regular with semibold for
+# emphasis. No lightweight/thin weights observed.
+
+typography:
+  font_family: "'Segoe UI', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif"
+  font_family_mono: "'Cascadia Code', 'Fira Mono', 'Consolas', monospace"
+
+  scale:
+    # Named sizes matching what's visible in the screenshots
+    page-title:
+      size: "28px"             # "Land Acquisition" heading on the red banner
+      weight: 600              # Semibold, not bold
+      line-height: 1.2
+      color: "white"           # Always on beazer-red background
+      letter-spacing: "normal"
+
+    section-heading:
+      size: "20px"             # "Land Acquisition Resource Links", "Power BI Reports"
+      weight: 600
+      line-height: 1.3
+      color: "text-dark"
+
+    card-title:
+      size: "14px"             # Quick-link card labels ("LAR Templates & Resources")
+      weight: 400              # Regular weight — not bold
+      line-height: 1.3
+      color: "text-dark"       # Dark text on white cards
+      text-align: "center"
+
+    nav-item:
+      size: "14px"             # Top navigation bar items ("Home", "All Land Documents")
+      weight: 400
+      line-height: 1
+      color: "text-primary"
+      active-color: "beazer-red"
+      active-decoration: "underline"  # Active tab has red underline
+
+    body:
+      size: "14px"             # Standard body text, link lists
+      weight: 400
+      line-height: 1.5
+      color: "text-primary"
+
+    body-small:
+      size: "12px"             # Metadata, timestamps, secondary labels
+      weight: 400
+      line-height: 1.4
+      color: "text-secondary"
+
+    label:
+      size: "12px"             # Form labels, column headers, small categorizers
+      weight: 600
+      line-height: 1.2
+      color: "text-secondary"
+      text-transform: "none"   # NOT uppercase — SharePoint doesn't use uppercase labels
+
+    caption:
+      size: "11px"             # Fine print, help text, sub-labels
+      weight: 400
+      line-height: 1.3
+      color: "text-secondary"
+
+  rules:
+    - "Never use font sizes below 11px"
+    - "Headings use semibold (600), NOT bold (700)"
+    - "Body text is always 14px regular (400)"
+    - "Do NOT use uppercase text transforms except for very specific badge/tag contexts"
+    - "Link text uses text-primary color with underline on hover, NOT blue by default"
+
+# ============================================================================
+# 3. LAYOUT & SPACING
+# ============================================================================
+# SharePoint pages use a centered content well with generous margins. The
+# Land Acquisition page shows a clear vertical stack: header → red banner →
+# card grid → link sections → report sections. Spacing is consistent and
+# airy — this is NOT a dense dashboard.
+
+layout:
+  page:
+    max-width: "1280px"        # Content well max width
+    margin: "0 auto"           # Centered
+    padding: "0 32px"          # Side padding within content well
+    background: "white"
+
+  header:
+    height: "48px"             # SharePoint suite bar (black with Beazer logo)
+    background: "white"        # The app bar below suite bar is white
+    border-bottom: "1px solid border-gray"
+
+  site-nav:
+    height: "44px"             # Secondary nav row ("Home | All Land Documents | ...")
+    background: "white"
+    border-bottom: "1px solid border-gray"
+    item-padding: "0 12px"
+    active-indicator: "2px solid beazer-red"  # Bottom border on active tab
+
+  banner:
+    background: "beazer-red"
+    padding: "24px 32px"
+    min-height: "80px"         # Red banner containing "Land Acquisition" title
+    margin-bottom: "24px"
+
+  content-sections:
+    section-gap: "32px"        # Vertical gap between major sections
+    heading-margin-bottom: "16px"
+
+  spacing:
+    xs: "4px"
+    sm: "8px"
+    md: "16px"
+    lg: "24px"
+    xl: "32px"
+    xxl: "48px"
+
+# ============================================================================
+# 4. COMPONENTS
+# ============================================================================
+
+components:
+
+  # ---- QUICK LINK CARDS (the 6 red-background cards on Land Acq page) ----
+  quick-link-card:
+    description: >
+      Prominent action cards with icons. On the Land Acquisition page, these
+      appear in a horizontal row with beazer-red backgrounds, white icons,
+      and white text labels. These are the primary CTAs.
+    layout: "vertical-center"
+    width: "120px"
+    padding: "20px 16px"
+    background: "beazer-red"
+    border-radius: "2px"       # Very subtle rounding — almost square
+    text-align: "center"
+    icon:
+      size: "32px"
+      color: "white"
+      margin-bottom: "8px"
+    label:
+      size: "13px"
+      weight: 400
+      color: "white"
+      line-height: 1.3
+    hover:
+      background: "beazer-red-dark"
+      cursor: "pointer"
+    container:
+      display: "flex"
+      gap: "12px"
+      flex-wrap: "nowrap"
+      justify-content: "center"
+      padding: "24px 0"
+      background: "white"
+
+  # ---- QUICK LINK CARDS (Vera homepage — white cards with icons) ----
+  quick-link-card-light:
+    description: >
+      On the Vera homepage, quick links use white/transparent cards with
+      colored line icons and labels below. These float over a hero image.
+    background: "rgba(255,255,255,0.95)"
+    border: "1px solid border-gray"
+    border-radius: "2px"
+    padding: "16px 12px"
+    text-align: "center"
+    width: "100px"
+    icon:
+      size: "28px"
+      color: "beazer-red"      # Icons are brand red
+    label:
+      size: "12px"
+      weight: 400
+      color: "text-primary"
+
+  # ---- RESOURCE LINK LIST ----
+  resource-link:
+    description: >
+      Simple text links with globe/document icons to the left. Used in the
+      "Land Acquisition Resource Links" section. Three-column layout.
+    layout: "horizontal"
+    icon:
+      type: "globe"             # SharePoint globe icon for external/site links
+      size: "20px"
+      color: "text-secondary"
+      margin-right: "8px"
+    text:
+      size: "14px"
+      weight: 400
+      color: "text-primary"     # NOT blue — standard text color
+      hover-color: "beazer-red"
+      hover-decoration: "underline"
+    container:
+      display: "grid"
+      columns: 3
+      gap: "12px 24px"
+      padding: "0"
+
+  # ---- SECTION HEADING ----
+  section-heading:
+    font-size: "20px"
+    font-weight: 600
+    color: "text-dark"
+    margin-bottom: "16px"
+    margin-top: "32px"
+    border: "none"             # No underlines or decorative borders
+
+  # ---- RED SECTION BANNER ----
+  section-banner:
+    description: >
+      Full-width red banner used as a section header (like "Land Acquisition"
+      at the top of the page). White text on beazer-red background.
+    background: "beazer-red"
+    padding: "24px 32px"
+    border-radius: "0"         # Full-bleed, no rounding
+    title:
+      size: "28px"
+      weight: 600
+      color: "white"
+    subtitle:
+      size: "14px"
+      weight: 400
+      color: "rgba(255,255,255,0.85)"
+
+  # ---- DATA TABLE ----
+  data-table:
+    width: "100%"
+    border-collapse: "collapse"
+    header:
+      background: "beazer-red"
+      color: "white"
+      font-size: "13px"
+      font-weight: 600
+      padding: "10px 12px"
+      text-align: "left"
+    row:
+      padding: "10px 12px"
+      font-size: "14px"
+      border-bottom: "1px solid mid-gray"
+      even-background: "off-white"
+      odd-background: "white"
+    cell:
+      padding: "10px 12px"
+      vertical-align: "middle"
+
+  # ---- NAVIGATION BAR ----
+  nav-bar:
+    description: >
+      Horizontal navigation with text-only items. Active item has a red
+      underline. On the Land page: "Home | All Land Documents | Reports |
+      Land Contacts | LD Dashboard Resources | Land Bank Status Reports |
+      LSR Tracker | LAR Tracker | Edit"
+    background: "white"
+    border-bottom: "1px solid border-gray"
+    items:
+      font-size: "14px"
+      font-weight: 400
+      color: "text-primary"
+      padding: "12px"
+      hover-color: "beazer-red"
+    active-item:
+      color: "text-dark"
+      font-weight: 600
+      border-bottom: "2px solid beazer-red"
+    special-item:
+      # "Edit" link styled differently (red text)
+      color: "beazer-red"
+      font-weight: 400
+
+  # ---- SUITE BAR (top black bar) ----
+  suite-bar:
+    description: >
+      The topmost bar in SharePoint. Black/dark background with the Beazer
+      logo, "SharePoint" text, and search bar.
+    height: "48px"
+    background: "white"        # Beazer's is actually white, not black
+    logo:
+      height: "32px"
+      # The Beazer logo with the green leaf sits here
+    search-bar:
+      width: "500px"
+      height: "32px"
+      border-radius: "4px"
+      border: "1px solid border-gray"
+      background: "light-gray"
+      placeholder-color: "text-secondary"
+
+  # ---- STATUS INDICATORS ----
+  status:
+    complete:
+      color: "success"         # #107C10
+      icon: "✓"
+      background: "#DFF6DD"
+    in-progress:
+      color: "warning"         # #FFB900
+      icon: "◐"
+      background: "#FFF4CE"
+    not-started:
+      color: "text-secondary"
+      icon: "○"
+      background: "light-gray"
+    overdue:
+      color: "error"           # #D13438
+      icon: "!"
+      background: "#FDE7E9"
+    blocked:
+      color: "error"
+      icon: "⊘"
+      background: "#FDE7E9"
+
+  # ---- BUTTONS ----
+  button:
+    primary:
+      background: "beazer-red"
+      color: "white"
+      font-size: "14px"
+      font-weight: 600
+      padding: "8px 20px"
+      border-radius: "2px"     # Almost square — SharePoint convention
+      border: "none"
+      hover-background: "beazer-red-dark"
+    secondary:
+      background: "white"
+      color: "text-primary"
+      font-size: "14px"
+      font-weight: 400
+      padding: "8px 20px"
+      border-radius: "2px"
+      border: "1px solid border-gray"
+      hover-background: "light-gray"
+    text:
+      background: "transparent"
+      color: "beazer-red"
+      font-size: "14px"
+      font-weight: 400
+      padding: "4px 8px"
+      hover-color: "beazer-red-dark"
+      hover-decoration: "underline"
+
+  # ---- CARDS (generic content card) ----
+  card:
+    background: "white"
+    border: "1px solid border-gray"
+    border-radius: "2px"
+    padding: "16px"
+    shadow: "0 1px 3px rgba(0,0,0,0.04)"  # Very subtle, almost flat
+    hover-shadow: "0 2px 6px rgba(0,0,0,0.08)"
+
+  # ---- SIDEBAR ----
+  sidebar:
+    width: "48px"              # Collapsed SharePoint left rail
+    background: "light-gray"
+    icon-color: "text-secondary"
+    active-icon-color: "beazer-red"
+
+# ============================================================================
+# 5. ICONOGRAPHY
+# ============================================================================
+# SharePoint uses Fluent UI icons (line-style, not filled). The Land Acquisition
+# page shows: document icons, globe icons, grid icons, home icon. These are
+# all single-color, 20-24px, thin/regular weight line icons.
+
+icons:
+  library: "Fluent UI (line/regular weight)"
+  fallback: "lucide-react"     # For React implementation
+  default-size: "20px"
+  colors:
+    default: "text-secondary"
+    on-red: "white"
+    active: "beazer-red"
+  rules:
+    - "Use line-weight icons only — never filled/solid"
+    - "Icons are functional indicators, not decorative"
+    - "Do NOT use emoji in the production UI — emoji were for POC scaffolding only"
+
+# ============================================================================
+# 6. PATTERNS SPECIFIC TO LAR PLATFORM
+# ============================================================================
+# These extend the SharePoint base patterns for our specific domain.
+
+lar_platform_patterns:
+
+  zone-colors:
+    # Zones should use the semantic color system, NOT custom accent colors.
+    # The beazer-red brand color provides the primary visual identity.
+    # Zone differentiation uses subtle left-border accents on cards/rows.
+    z1-pre-lar:
+      accent: "info"           # Blue (#0078D4) — screening/early
+      label: "Pre-LAR"
+    z2-due-diligence:
+      accent: "warning"        # Amber (#FFB900) — active work
+      label: "Due Diligence"
+    z3-clear-to-close:
+      accent: "success"        # Green (#107C10) — nearing completion
+      label: "Clear to Close"
+    z4-land-banking:
+      accent: "text-secondary" # Gray (#605E5C) — holding pattern
+      label: "Land Banking"
+
+  deal-risk-tiers:
+    fast-track:
+      tag-bg: "#DFF6DD"
+      tag-color: "#107C10"
+    normal:
+      tag-bg: "#EDF2F9"
+      tag-color: "#0078D4"
+    higher-risk:
+      tag-bg: "#FFF4CE"
+      tag-color: "#7A6400"
+    board-notification:
+      tag-bg: "#FDE7E9"
+      tag-color: "#A4262C"
+    board-approval:
+      tag-bg: "#D13438"
+      tag-color: "white"
+
+  checklist-item:
+    container:
+      background: "white"
+      border: "1px solid border-gray"
+      border-radius: "2px"
+      padding: "12px 16px"
+      margin-bottom: "4px"
+    complete:
+      border-left: "3px solid success"
+    in-progress:
+      border-left: "3px solid warning"
+    blocked:
+      border-left: "3px solid error"
+    not-started:
+      border-left: "3px solid border-gray"
+
+  delegation-indicator:
+    icon: "arrow-right"
+    font-size: "12px"
+    color: "text-secondary"
+    format: "{from-team} → {to-team}"
+
+  committee-timeline:
+    # The 12-day LAR review timeline
+    steps:
+      - { day: 0, label: "Submit", bg: "beazer-red", color: "white" }
+      - { day: 5, label: "Review Complete", bg: "light-gray", color: "text-dark" }
+      - { day: 7, label: "Questions", bg: "light-gray", color: "text-dark" }
+      - { day: 9, label: "Answers Due", bg: "light-gray", color: "text-dark" }
+      - { day: 12, label: "Vote", bg: "beazer-red", color: "white" }
+
+# ============================================================================
+# 7. ANTI-PATTERNS — DO NOT USE
+# ============================================================================
+# These were present in the POC scaffold or the old presentation style guide
+# but should NOT appear in the production platform.
+
+anti_patterns:
+  - pattern: "Gradient backgrounds (linear-gradient)"
+    reason: "SharePoint uses flat, solid colors. Gradients look like a third-party app."
+  - pattern: "Emoji icons (🔍 📋 ✅ 🤖)"
+    reason: "SharePoint uses Fluent UI line icons. Emoji read as prototype/consumer."
+  - pattern: "Pill badges with rounded corners (border-radius: 15px)"
+    reason: "SharePoint uses barely-rounded or square elements (border-radius: 2px)."
+  - pattern: "Green accent color (#679F7B) as primary"
+    reason: "Beazer-red is the primary UI color. Green is only for success states."
+  - pattern: "Gold accent color (#AE8F5D)"
+    reason: "Not present anywhere in Beazer's SharePoint UI."
+  - pattern: "Dark backgrounds for headers (#222B26)"
+    reason: "Beazer uses white headers with red accents, not dark themes."
+  - pattern: "Uppercase labels and text transforms"
+    reason: "SharePoint uses sentence case throughout."
+  - pattern: "Heavy card borders (2-3px colored borders)"
+    reason: "SharePoint cards use 1px gray borders. Color accents are 3px left-border only."
+  - pattern: "Large border-radius (6px+)"
+    reason: "SharePoint elements are nearly square (2px radius)."
+  - pattern: "Shadow-heavy cards"
+    reason: "SharePoint is nearly flat. Shadows are 1-2px max."
+
+# ============================================================================
+# 8. IMPLEMENTATION NOTES FOR CLAUDE CODE
+# ============================================================================
+
+implementation:
+  framework: "React (JSX)"
+  css_approach: "Inline styles or CSS modules — match the YAML tokens exactly"
+  icon_library: "lucide-react (closest to Fluent UI line icons available in React)"
+  font_loading: "Segoe UI is a system font on Windows. For Mac/Linux fallback, use the font stack above."
+
+  color_mapping_from_old_poc:
+    # When migrating from POC v2, replace these colors:
+    "#679F7B": "Do not use — was accentGreen. Replace with #0078D4 (info) or #107C10 (success) depending on context."
+    "#AE8F5D": "Do not use — was accentGold. Replace with #FFB900 (warning) where appropriate."
+    "#222B26": "Do not use as background — was primaryDark. Replace with #323130 (text-primary) for text."
+    "#F2F0EE": "Replace with #F3F2F1 (light-gray) — SharePoint's actual surface color."
+    "#9F2C32": "KEEP — this is beazer-red, the correct brand color."
+    "#9F9C8F": "Replace with #605E5C (text-secondary) — SharePoint's neutral secondary."
+
+  file_structure:
+    - "styles/tokens.js — export all color, spacing, typography tokens"
+    - "styles/theme.js — composed theme object for style props"
+    - "This YAML is the source of truth — tokens.js should be auto-generated from it"
